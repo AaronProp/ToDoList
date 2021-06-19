@@ -1,3 +1,4 @@
+import { FormHelperText } from '@material-ui/core';
 import { Paper, InputBase, makeStyles } from '@material-ui/core';
 import React, { useState } from 'react';
 
@@ -12,8 +13,10 @@ const Input = () => {
        </Paper>
 
        <div className={clases.confirmar}>
-           <button class=" bg-green-600 border rounded p-1">Agregar</button>
-           <button class=" bg-red-400 border rounded p-1">Descartar</button>
+           <div>
+              <button className={clases.btnConfirmar}>Agregar</button>
+           </div>
+              <button className={clases.btnDenegar}>Descartar</button>
        </div>
        </div>
     );
@@ -23,8 +26,24 @@ const Input = () => {
 const useStyle = makeStyles(theme => ({
     tarjeta: {
        margin: theme.spacing(2,1,1,1),
-       padding: theme.spacing(1),
+       padding: theme.spacing(1)
         },
-        
+        confirmar: {
+            display: "flex",
+            margin: theme.spacing(1)
+        },
+        btnConfirmar: {
+            background: "#00FC25",
+            color: "white",
+            "&:hover":{
+                background:"gray"
+            }
+        },
+        btnDenegar: {
+            background: "#FF2207",
+            "&:hover":{
+                background:"orange"
+            }
+        }
 }))
 export default Input;

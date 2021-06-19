@@ -35,6 +35,6 @@ const useStyle = makeStyles(theme => ({
                 backgroundColor: fade("#000", .05),
             }
         }
-}))
+}));
 
 export default Agregar;
