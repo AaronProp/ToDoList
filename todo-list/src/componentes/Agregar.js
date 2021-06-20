@@ -2,19 +2,24 @@ import React from 'react';
 import {Collapse, fade, makeStyles, Paper, Typography} from "@material-ui/core"
 import {useState} from 'react'
 import Input from './Input';
-import { classicNameResolver } from 'typescript';
 
-const Agregar = () => {
-    const [open, setOpen] = useState(true);
+const Agregar = ({type}) => {
+    const [open, setOpen] = useState(false);
     const clases = useStyle();
     return (
         <div className={clases.root}>
             <Collapse in={open}>
-                <Input></Input>
+                <Input type ={type} setOpen={setOpen}></Input>
             </Collapse>
             <Collapse in={!open}>
-                <Paper className={clases.input}>
-                    <Typography>+ Nueva tarea</Typography>
+                <Paper className={clases.input} onClick={()=>setOpen(true)}>
+                    <Typography>
+                        {
+                            type==="card"?
+                            "+ Nueva tarea":
+                            "+ Nueva Lista"
+                        }
+                        </Typography>
                 </Paper>
             </Collapse>
             

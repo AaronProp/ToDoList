@@ -13,14 +13,14 @@ const Lista = () => {
             <CssBaseline></CssBaseline>
             <EncabezadoLista></EncabezadoLista>
             <Tarjeta></Tarjeta>
-            <Agregar></Agregar>
+            <Agregar type="card"></Agregar>
         </Paper>
     );
 };
 
 const useStyle = makeStyles(theme => ({
     root: {
-        width: "300px",
+        minWidth: "250px",
         background : "#BED1E5",
         margin: theme.spacing(2)
         }

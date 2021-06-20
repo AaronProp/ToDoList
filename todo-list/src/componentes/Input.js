@@ -1,22 +1,39 @@
 import { FormHelperText } from '@material-ui/core';
-import { Paper, InputBase, makeStyles } from '@material-ui/core';
+import { Paper, InputBase, makeStyles, IconButton, Button } from '@material-ui/core';
 import React, { useState } from 'react';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
-const Input = () => {
+const Input = ({type, setOpen}) => {
     const clases = useStyle();
     const [titulo, setTitulo] = useState("")
     return (
         <div>
        <Paper className={clases.tarjeta}>
-           <InputBase value={titulo} onChange={e=>setTitulo(e.target.value)}
-           placeholder="Tarea Ej. Limpiar casa"></InputBase>
+           <InputBase 
+           multiline
+           value={titulo} 
+           onBlur={()=>setOpen(false)}
+           onChange={e=>setTitulo(e.target.value)}
+           placeholder={
+               type ==="card"?
+               "Tarea Ej. Limpiar casa":
+               "Nombre de la lista"
+           }
+           inputProps={{className: clases.Input}}
+           ></InputBase>
        </Paper>
 
        <div className={clases.confirmar}>
-           <div>
-              <button className={clases.btnConfirmar}>Agregar</button>
-           </div>
-              <button className={clases.btnDenegar}>Descartar</button>
+           
+              <Button className={clases.btnConfirmar}>{
+                  type == "card" ? "Agregar":
+                  "Nueva Lista"
+              }
+              </Button>
+           
+              <IconButton onClick={()=>setOpen(false)}>
+                  <HighlightOffIcon/>
+              </IconButton>
        </div>
        </div>
     );
@@ -35,15 +52,11 @@ const useStyle = makeStyles(theme => ({
         btnConfirmar: {
             background: "#00FC25",
             color: "white",
+            padding: (4),
+            margin:(2),
             "&:hover":{
                 background:"gray"
             }
         },
-        btnDenegar: {
-            background: "#FF2207",
-            "&:hover":{
-                background:"orange"
-            }
-        }
 }))
 export default Input;
