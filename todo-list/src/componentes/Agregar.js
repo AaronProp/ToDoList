@@ -3,13 +3,13 @@ import {Collapse, fade, makeStyles, Paper, Typography} from "@material-ui/core"
 import {useState} from 'react'
 import Input from './Input';
 
-const Agregar = ({type}) => {
+const Agregar = ({type, listId}) => {
     const [open, setOpen] = useState(false);
     const clases = useStyle();
     return (
         <div className={clases.root}>
             <Collapse in={open}>
-                <Input type ={type} setOpen={setOpen}></Input>
+                <Input type ={type} setOpen={setOpen} listId={listId}></Input>
             </Collapse>
             <Collapse in={!open}>
                 <Paper className={clases.input} onClick={()=>setOpen(true)}>
@@ -35,9 +35,9 @@ const useStyle = makeStyles(theme => ({
         input:{
             padding: theme.spacing(1.5),
             margin: theme.spacing(1),
-            background: "#BED1E5",
+            background: "#d8d8c1",
             "&:hover":{
-                backgroundColor: fade("#000", .05),
+                backgroundColor: "#bcb491",
             }
         }
 }));

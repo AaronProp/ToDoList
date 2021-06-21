@@ -1,12 +1,24 @@
 import { makeStyles, Paper } from '@material-ui/core';
 import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
+import { Provider } from 'react-redux';
 
-const Tarjeta = () => {
+const Tarjeta = ({card, index}) => {
     const clases = useStyle();
     return (
-        <Paper className={clases.tarjeta}>
-            Hola
-        </Paper>
+        <Draggable draggableId={card.id} index={index}>
+        {
+            (provided)=>(
+                <div ref={provided.innerRef} {...provided.dragHandleProps}
+                     {...provided.draggableProps}>
+                    <Paper className={clases.tarjeta}>
+                    {card.title}
+                    </Paper>
+                </div>
+                
+            )
+        }
+        </Draggable>
     );
 };
 
