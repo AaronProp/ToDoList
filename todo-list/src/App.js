@@ -10,6 +10,14 @@ import uuid from 'react-uuid'
 import {DragDropContext, Droppable} from "react-beautiful-dnd"
 import Login from './componentes/Login';
 
+import{
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Registro from './componentes/Registro';
+
 function App() {
   const clases = useStyle();
   const [data, setData] = useState(datos)
@@ -107,8 +115,12 @@ function App() {
   }
 
   return (
+    <Router>
+      <div class="grid grid-cols-2">
+      <Login></Login>
+      <Registro></Registro>
+      </div>
       <ContextAPI.Provider value={addCard, addList}>
-        <Login></Login>
         <div className={clases.root}>
           <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="12345" type="list" direction="horizontal">
@@ -135,6 +147,7 @@ function App() {
       </DragDropContext>
     </div>
       </ContextAPI.Provider>
+      </Router>
   );
 }
 
