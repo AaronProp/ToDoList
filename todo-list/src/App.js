@@ -8,6 +8,7 @@ import { useState } from 'react';
 import ContextAPI from './ContextAPI';
 import uuid from 'react-uuid'
 import {DragDropContext, Droppable} from "react-beautiful-dnd"
+import Login from './componentes/Login';
 
 function App() {
   const clases = useStyle();
@@ -107,6 +108,7 @@ function App() {
 
   return (
       <ContextAPI.Provider value={addCard, addList}>
+        <Login></Login>
         <div className={clases.root}>
           <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="12345" type="list" direction="horizontal">
